@@ -21,11 +21,11 @@ async function start(date) {
 		// loading the html data to cheerio for parsing the html elements
 		const htmlLoad = cheerio.load(urlResponseData.toString());
 		// parsing the title from the html data;
-		const title = htmlLoad('title').text();
+		const title = htmlLoad('.css-1cw0rco').text();
 
 		// extracting the script '#__NEXT_DATA__' for parsing the image url
 		const scriptHtml = htmlLoad("#__NEXT_DATA__").html();
-
+		
 		// cleaning the invalid json in the script html for successful json parsing
 		const parsedHtml = scriptHtml.replace(/,\s*}/g, "}").replace(/,\s*]/g, "]").replace(/]\s*"\s*seoKeywords"/g, '], "seoKeywords"');
 
